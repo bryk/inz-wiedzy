@@ -1,0 +1,13 @@
+Authors: Piotr Bryk, Maciej Mazur
+
+Wymagania:
+java8
+mysql - utworzona baza mydatabase dostępna pod adresem "jdbc:mysql://localhost/mydatabase", 
+Dostęp dla użytkownika root
+
+Pobieranie pliku z danymi:
+./scripts/fetch-big-inputs.sh 
+Generowanie paczki:
+./scripts/rebuild.sh
+Uruchamienia aplikacji zapełniajacej bazę i liczącej podstawowe statystyki:
+./scripts/run.sh inputs/dblp.xml
