@@ -1,15 +1,16 @@
 package pl.edu.agh.iiet.model;
 
 public enum PublicationType {
-	BOOK("BOOK"), WWW("WWW"), INPROCEEDINGS("INPROCEEDINGS"), PROCEEDINGS("PROCEEDINGS"), INCOLLECTION("INCOLLECTION");
+	ARTICLE("ARTICLE");
 
-    private String type;
-    PublicationType(String name){
-        this.type = name;
-    }
+	private String type;
 
-    @Override
-    public String toString() {
-        return type;
-    }
+	PublicationType(String name) {
+		this.type = name;
+	}
+
+	@Override
+	public String toString() {
+		return type;
+	}
 }

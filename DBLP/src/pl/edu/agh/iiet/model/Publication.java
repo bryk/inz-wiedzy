@@ -18,6 +18,7 @@ public final class Publication {
 	private final String title;
 	private final int year;
 	private final String publisher;
+	private final String journal;
 	private final ImmutableList<Author> authors;
 	private final PublicationType type;
 	private final String crossref;
@@ -26,13 +27,14 @@ public final class Publication {
 	 * Returns true when this publication should be added to the output series.
 	 */
 	public boolean shouldBeAddedToSeries() {
-		return year >= 1990 && year <= 1994;
+		return year >= 1990 && year <= 2000;
 	}
 
 	public static final class Builder {
 		private String title;
 		private int year;
 		private String publisher;
+		private String journal;
 		private List<String> authorNames = new ArrayList<>();
 		private PublicationType type;
 		private String key;
@@ -48,6 +50,11 @@ public final class Publication {
 
 		public Builder setCrossref(String cr) {
 			crossref = cr;
+			return this;
+		}
+		
+		public Builder setJournal(String s) {
+			journal = s;
 			return this;
 		}
 
@@ -75,7 +82,7 @@ public final class Publication {
 					.collect(Collectors.toList());
 
 			Publication p = new Publication(title, year, publisher,
-					ImmutableList.copyOf(authors), type, key, crossref);
+					ImmutableList.copyOf(authors), type, key, crossref, journal);
 
 			for (Author a : authors)
 				a.addPublication(p);
@@ -89,7 +96,7 @@ public final class Publication {
 
 	Publication(String title, int year, String publisherName,
 			ImmutableList<Author> authors, PublicationType publicationType,
-			String key, String crossref) {
+			String key, String crossref, String journal) {
 		this.id = totalNumberOfAuthors++;
 		this.title = title;
 		this.year = year;
@@ -98,12 +105,13 @@ public final class Publication {
 		this.type = publicationType;
 		this.key = key;
 		this.crossref = crossref;
+		this.journal = journal;
 	}
 
 	public void toCsvWithoutAuthors(CSVPrinter csv) throws IOException {
 		//for (Author author : authors) {
 			csv.printRecord(id, title, year, publisher, type,
-					key, crossref);
+					key, journal);
 		//}
 	}
 
@@ -112,6 +120,7 @@ public final class Publication {
 		return "Publication [number=" + id + ", title=" + title + ", year="
 				+ year + ", publisher=" + publisher + ", authors=" + authors
 				+ ", type=" + type + ", key=" + key + ", crossref=" + crossref
+				+ ", journal=" + journal
 				+ "]";
 	}
 

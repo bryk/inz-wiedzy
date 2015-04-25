@@ -50,7 +50,7 @@ public class Parser {
 			if (currentPublicationBuilder != null) {
 				if ("author".equals(qName) || "title".equals(qName)
 						|| "year".equals(qName) || "publisher".equals(qName)
-						|| "crossref".equals(qName)) {
+						|| "crossref".equals(qName) || "journal".equals(qName)) {
 					strBuilder = new StringBuilder();
 				}
 			} else if (pubTypes.containsKey(qName)) {
@@ -65,11 +65,8 @@ public class Parser {
 		}
 
 		Map<String, PublicationType> pubTypes = ImmutableMap
-				.<String, PublicationType> of("inproceedings",
-						PublicationType.INPROCEEDINGS, "proceedings",
-						PublicationType.PROCEEDINGS, "incollection",
-						PublicationType.INCOLLECTION, "book",
-						PublicationType.BOOK);
+				.<String, PublicationType> of(
+						"article", PublicationType.ARTICLE);
 
 		@Override
 		public void characters(char[] chars, int start, int length)
@@ -96,6 +93,10 @@ public class Parser {
 				} else if ("year".equals(qName)) {
 					currentPublicationBuilder.setYear(Integer
 							.parseInt(strBuilder.toString()));
+					strBuilder = null;
+				} else if ("journal".equals(qName)) {
+					currentPublicationBuilder.setJournal(strBuilder
+							.toString());
 					strBuilder = null;
 				} else if ("publisher".equals(qName)) {
 					currentPublicationBuilder.setPublisher(strBuilder
