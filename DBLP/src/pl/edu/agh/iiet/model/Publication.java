@@ -19,15 +19,17 @@ public final class Publication {
 	private final int year;
 	private final String publisher;
 	private final String journal;
+	private final String journalKey;
 	private final ImmutableList<Author> authors;
 	private final PublicationType type;
 	private final String crossref;
-	
+	private final Integer numPages;
+
 	/**
 	 * Returns true when this publication should be added to the output series.
 	 */
 	public boolean shouldBeAddedToSeries() {
-		return year >= 1990 && year <= 2000;
+		return year <= 2014;
 	}
 
 	public static final class Builder {
@@ -38,7 +40,9 @@ public final class Publication {
 		private List<String> authorNames = new ArrayList<>();
 		private PublicationType type;
 		private String key;
+		private String journalKey;
 		private String crossref;
+		private Integer numPages;
 
 		public void setTitle(String title) {
 			this.title = title.replaceAll("\\s+", " ").trim();
@@ -52,9 +56,19 @@ public final class Publication {
 			crossref = cr;
 			return this;
 		}
-		
+
 		public Builder setJournal(String s) {
 			journal = s;
+			return this;
+		}
+
+		public Builder setNumPages(Integer s) {
+			numPages = s;
+			return this;
+		}
+
+		public Builder setJournalKey(String s) {
+			journalKey = s;
 			return this;
 		}
 
@@ -82,7 +96,8 @@ public final class Publication {
 					.collect(Collectors.toList());
 
 			Publication p = new Publication(title, year, publisher,
-					ImmutableList.copyOf(authors), type, key, crossref, journal);
+					ImmutableList.copyOf(authors), type, key, journalKey,
+					crossref, journal, numPages);
 
 			for (Author a : authors)
 				a.addPublication(p);
@@ -96,7 +111,8 @@ public final class Publication {
 
 	Publication(String title, int year, String publisherName,
 			ImmutableList<Author> authors, PublicationType publicationType,
-			String key, String crossref, String journal) {
+			String key, String journalKey, String crossref, String journal,
+			Integer numPages) {
 		this.id = totalNumberOfAuthors++;
 		this.title = title;
 		this.year = year;
@@ -104,15 +120,21 @@ public final class Publication {
 		this.authors = authors;
 		this.type = publicationType;
 		this.key = key;
+		this.journalKey = journalKey;
 		this.crossref = crossref;
 		this.journal = journal;
+		this.numPages = numPages;
+	}
+
+	public static void printCsvHeader(CSVPrinter csv) throws IOException {
+		csv.printRecord("Id", "Name", "publicationYear", "publicationType",
+				"publicationKeyFull", "journalKey", "publicationJournal",
+				"numPages");
 	}
 
 	public void toCsvWithoutAuthors(CSVPrinter csv) throws IOException {
-		//for (Author author : authors) {
-			csv.printRecord(id, title, year, publisher, type,
-					key, journal);
-		//}
+		csv.printRecord(id, title, year, type, key, journalKey, journal,
+				numPages);
 	}
 
 	@Override
@@ -120,8 +142,7 @@ public final class Publication {
 		return "Publication [number=" + id + ", title=" + title + ", year="
 				+ year + ", publisher=" + publisher + ", authors=" + authors
 				+ ", type=" + type + ", key=" + key + ", crossref=" + crossref
-				+ ", journal=" + journal
-				+ "]";
+				+ ", journal=" + journal + "]";
 	}
 
 	public final String getName() {

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,6 +27,11 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
 public class Parser {
+	private static final Pattern JOURNAL_KEY_PATTERN = Pattern
+			.compile("journals\\/(\\S+)/\\S+");
+	private static final Pattern PAGES_PATTERN = Pattern
+			.compile("(\\d+)-(\\d+)");
+
 	public static Dblp getDblpGraphFromFile(File input)
 			throws ParserConfigurationException, SAXException, IOException {
 		SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
@@ -50,23 +57,31 @@ public class Parser {
 			if (currentPublicationBuilder != null) {
 				if ("author".equals(qName) || "title".equals(qName)
 						|| "year".equals(qName) || "publisher".equals(qName)
-						|| "crossref".equals(qName) || "journal".equals(qName)) {
+						|| "crossref".equals(qName) || "journal".equals(qName)
+						|| "pages".equals(qName)) {
 					strBuilder = new StringBuilder();
 				}
 			} else if (pubTypes.containsKey(qName)) {
 				currentPublicationBuilder = Publication.builder().setType(
 						pubTypes.get(qName));
-				currentPublicationBuilder.setKey(attributes.getValue("key"));
+				String key = attributes.getValue("key");
+				currentPublicationBuilder.setKey(key);
+				Matcher match = JOURNAL_KEY_PATTERN.matcher(key);
+				if (match.matches()) {
+					String journalKey = match.group(1);
+					currentPublicationBuilder.setJournalKey(journalKey);
+				}
 				publicationBuilders.add(currentPublicationBuilder);
 				if (publicationBuilders.size() % 1000 == 0) {
-					System.out.println("Publication: " + publicationBuilders.size());
+					System.out.println("Publication: "
+							+ publicationBuilders.size());
 				}
 			}
 		}
 
 		Map<String, PublicationType> pubTypes = ImmutableMap
-				.<String, PublicationType> of(
-						"article", PublicationType.ARTICLE);
+				.<String, PublicationType> of("article",
+						PublicationType.ARTICLE);
 
 		@Override
 		public void characters(char[] chars, int start, int length)
@@ -94,9 +109,18 @@ public class Parser {
 					currentPublicationBuilder.setYear(Integer
 							.parseInt(strBuilder.toString()));
 					strBuilder = null;
+				} else if ("pages".equals(qName)) {
+					String pages = strBuilder.toString();
+					Matcher matcher = PAGES_PATTERN.matcher(pages);
+					if (matcher.matches()) {
+						Integer from = Integer.parseInt(matcher.group(1));
+						Integer to = Integer.parseInt(matcher.group(2));
+						currentPublicationBuilder.setNumPages(to - from);
+					}
+					strBuilder = null;
 				} else if ("journal".equals(qName)) {
-					currentPublicationBuilder.setJournal(strBuilder
-							.toString());
+					currentPublicationBuilder.setJournal(strBuilder.toString());
+
 					strBuilder = null;
 				} else if ("publisher".equals(qName)) {
 					currentPublicationBuilder.setPublisher(strBuilder
