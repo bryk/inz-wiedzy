@@ -5,6 +5,10 @@ java8
 mysql - utworzona baza mydatabase dostępna pod adresem "jdbc:mysql://localhost/mydatabase", 
 Dostęp dla użytkownika root
 
+Crawler JCR wymaga połączenia przez sieć agh.
+Jeżeli korzystamy z tunelu SOCKS, trzeba uruchomić z odpowiednimi parametrami jvm, np:
+-DsocksProxyHost=localhost -DsocksProxyPort=8888
+
 Pobieranie pliku z danymi:
 ./scripts/fetch-big-inputs.sh 
 Generowanie paczki:

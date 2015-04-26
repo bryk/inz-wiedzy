@@ -18,6 +18,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import pl.edu.agh.iiet.mapper.JcrDblpJorunalTitleMatcher;
 import pl.edu.agh.iiet.model.Author;
 import pl.edu.agh.iiet.model.Dblp;
 import pl.edu.agh.iiet.model.Publication;
@@ -25,6 +26,7 @@ import pl.edu.agh.iiet.model.PublicationType;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import pl.edu.agh.ztis.jcr.model.JCREntry;
 
 public class Parser {
 	private static final Pattern JOURNAL_KEY_PATTERN = Pattern
@@ -32,7 +34,7 @@ public class Parser {
 	private static final Pattern PAGES_PATTERN = Pattern
 			.compile("(\\d+)-(\\d+)");
 
-	public static Dblp getDblpGraphFromFile(File input)
+	public static Dblp getDblpGraphFromFile(File input, Map<String, JCREntry> jcrEntryMap)
 			throws ParserConfigurationException, SAXException, IOException {
 		SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 		SAXParser saxParser = saxParserFactory.newSAXParser();
@@ -40,7 +42,7 @@ public class Parser {
 
 		saxParser.parse(input, handler);
 		System.out.println("Done parsing");
-		Dblp ret = handler.computeDblpGraph();
+		Dblp ret = handler.computeDblpGraph(jcrEntryMap);
 		System.out.println("Done creating graph");
 		return ret;
 	}
@@ -137,7 +139,23 @@ public class Parser {
 			}
 		}
 
-		public Dblp computeDblpGraph() {
+		private void addJCRData(Map<String, JCREntry> jcrEntryMap) {
+			if (jcrEntryMap != null) {
+				List<String> jcrTitles = jcrEntryMap.entrySet().stream().map(entry -> entry.getValue().getTitle()).collect(Collectors.toList());
+				JcrDblpJorunalTitleMatcher mapper = new JcrDblpJorunalTitleMatcher();
+				publicationBuilders.forEach(builder -> {
+					String dblpTitle = builder.getJournal();
+					String matchedJcrTitle = mapper.findBestMatch(dblpTitle, jcrTitles);
+					JCREntry jcrEntry = jcrEntryMap.get(matchedJcrTitle);
+					if (jcrEntry != null) {
+						builder.setJournalImpactFactor(jcrEntry.getImpactFactor());
+					}
+				});
+			}
+		}
+
+		public Dblp computeDblpGraph(Map<String, JCREntry> jcrEntryMap) {
+			addJCRData(jcrEntryMap);
 			Map<String, Author> authorsByName = authorBuildersByName
 					.entrySet()
 					.stream()
