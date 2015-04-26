@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Dblp2.iml" filepath="$PROJECT_DIR$/Dblp2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dblpeksploracjadanych.iml" filepath="$PROJECT_DIR$/dblpeksploracjadanych.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jcr-crawler/jcr-crawler.iml" filepath="$PROJECT_DIR$/jcr-crawler/jcr-crawler.iml" />
     </modules>
   </component>
 </project>
-

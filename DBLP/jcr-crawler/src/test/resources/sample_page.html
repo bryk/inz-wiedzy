@@ -1,0 +1,514 @@
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!-- Begin JCR Header -->
+<html>
+<head>
+    <title>JCR-Web 4.5 Journal Summary List </title>
+    <link href="http://admin-apps.webofknowledge.com/JCR/jcr_stylesheet.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript" src="http://admin-apps.webofknowledge.com/JCR/common.js"></script>
+    <table class="header" width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+            <div style="background-image: url(http://admin-apps.webofknowledge.com/JCR/images/wok_logo_bk.gif); background-repeat: repeat; margin-bottom: 5px; padding-top: 4px; padding-right: 4px; padding-bottom: 4px; padding-left: 9px; margin-left: -10px;"><img src="http://admin-apps.webofknowledge.com/JCR/images/wok_logo_jcr.gif" alt="ISI Web of Knowledge"  name="ISI Web of Knowledge"  align="bottom" title="ISI Web of Knowledge" /></div>
+        </tr>
+    </table>
+
+    <table class="header" width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+            <td height="3"><img src="http://admin-apps.webofknowledge.com/JCR/images/jcrhdr.gif" alt="Journal Citation Reports" name="Journal Citation Reports" title="Journal Citation Reports" /></td> </tr>
+    </table>
+</head>
+<!-- End JCR Header -->
+
+<body>
+<script language="JavaScript" type="text/javascript"><!--
+function set_new_window_props() {
+    var winprops;
+
+    var win_w = parseInt(screen.width * .85);
+    var win_h = parseInt(screen.height * .70);
+
+    winprops = 'height='+ win_h +',width='+ win_w +',top=70,left=60,toolbar=yes,menubar=yes,'+
+    'resizable=yes,scrollbars=yes,status=no';
+
+    return winprops;
+}
+//Open new browser window
+function openBrWindow(theURL,winName,features) {
+    if(typeof features !='object'){
+        features=set_new_window_props();
+    }
+
+    newWindow = window.open(theURL,winName,features);
+    newWindow.focus();
+
+    return false;
+}
+//--></script>
+<form method="post" action="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=LIST_SUMMARY_JOURNAL" enctype="application/x-www-form-urlencoded">
+    <table class="header" width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+            <td class="header"><a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=HOME"><img name="Welcome and Main Menu" src="http://admin-apps.webofknowledge.com/JCR/images/tbhome.gif" alt="Welcome and Main Menu" title="Welcome and Main Menu" border="0"></a>&nbsp;<a href="" onClick="return show_help('http://admin-apps.webofknowledge.com/JCR/JCR?RQ=HELP&help_context=2.7', 'HELP');"><img name="Help" src="http://admin-apps.webofknowledge.com/JCR/images/tbhelp.gif" alt="Help" title="Help" border="0" ></a>&nbsp;</td>
+            <td class="header" nowrap="nowrap" align="right">2013 JCR Science Edition</td>
+        </tr>
+    </table>
+
+    <table class="PageHeader" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr >
+            <td height="17">
+                <h3> <img src="http://admin-apps.webofknowledge.com/JCR/images/jrnl_icon.gif" width="17" height="20">&nbsp;Journal
+                    Summary List</h3>
+            </td>
+            <td align="right"><a href="#" onClick="openBrWindow('http://admin-apps.webofknowledge.com/JCR/JCR?RQ=TITLE_CHANGES','','menubar=yes,scrollbars=yes,resizable=yes,width=750,height=550')" class="journalTitleChanges">Journal Title Changes</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <center>
+        <table border="0" cellspacing="0" cellpadding="1" width="100%" valign="TOP">
+            <tr>
+                <td nowrap class="optionTable" align="top" valign="TOP">
+                    <b> &nbsp;Journals from:&nbsp;</b>
+                </td>
+                <td width="92%" class="optionTable"><b>All Journals</b>
+
+                </td>
+            </tr>
+            <tr>
+                <td nowrap="nowrap" class="optionTable"><b>&nbsp;Sorted by:&nbsp; </b></td>
+                <td class="optionTable">
+
+                    <select NAME="journal_sort_by">
+                        <option VALUE="title" SELECTED>Journal Title</option>
+                        <option VALUE="cites_all" >Total Cites</option>
+                        <option VALUE="impact_current" >Impact Factor</option>
+                        <option VALUE="immediacy" >Immediacy Index</option>
+                        <option VALUE="source_current" >Current Articles</option>
+                        <option VALUE="cited_hlife" >Cited Half-Life</option>
+                        <option VALUE="impact_5year" >5-Year Impact Factor</option>
+                        <option VALUE="eigen_factor" ><nobr><i>Eigenfactor</i><sup>&reg;</sup></nobr><br>
+                            Score</option>
+                        <option VALUE="article_influence" ><i>Article</i><nobr><i>Influence</i><sup>&reg;</sup></nobr><br>
+                            Score</option>
+                    </select>
+                    <input type="image" name="Sort Again" src="http://admin-apps.webofknowledge.com/JCR/images/newsort.gif" alt="Sort Again" title="Sort Again" border="0" align="top" />
+                </td>
+            </tr>
+        </table>
+        <hr align="left" />
+
+        <!-- Start VCR Control -->
+        <table width="100%">
+            <tr>
+                <td width="25%" align="left" nowrap="nowrap"><b>Journals 1321 - 1340 (of&nbsp;8539)</b></td>
+                <td width="50%" align="center" nowrap="nowrap"> <table border=0 cellspacing=0 cellpadding=0 class=textbold > <tr align=CENTER valign=MIDDLE> <td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1"> <img src="http://admin-apps.webofknowledge.com/JCR/images/first10a.gif" alt="First Page" title="First Page" name="First Page"  border="0" vspace="1" hspace="1" ></A></td><td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1001"> <img src="http://admin-apps.webofknowledge.com/JCR/images/back10a.gif" alt="Previous 10 Pages" title="Previous 10 Pages" name="Previous 10 Pages"  border="0" vspace="1" hspace="1" ></A></td><td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1301"> <img src="http://admin-apps.webofknowledge.com/JCR/images/prevpga.gif" alt="Previous Page" title="Previous Page" name="Previous Page"  border="0" vspace="1" hspace="1" ></A></td><td NOWRAP>[ <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1201">61</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1221">62</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1241">63</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1261">64</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1281">65</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1301">66</A> | <i>67</i> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1341">68</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1361">69</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1381">70</A> ]</td><td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1341"> <img src="http://admin-apps.webofknowledge.com/JCR/images/nextpga.gif" alt="Next Page" title="Next Page" name="Next Page"  border="0" vspace="1" hspace="1" ></A></td><td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1401"> <img src="http://admin-apps.webofknowledge.com/JCR/images/frwrd10a.gif" alt="Next 10 Pages" title="Next 10 Pages" name="Next 10 Pages"  border="0" vspace="1" hspace="1" ></A></td><td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=8521"> <img src="http://admin-apps.webofknowledge.com/JCR/images/last10a.gif" alt="Last Page" title="Last Page" name="Last Page"  border="0" vspace="1" hspace="1" ></A></td></tr></table></td>
+                <td width="25%" align="right" nowrap="nowrap"><b>Page 67 of&nbsp;427</b></td>
+            </tr>
+        </table>
+        <!-- End VCR Control -->
+
+        <!-- Start Summary List Button Bar -->
+        <table width="100%">
+            <tr>
+                <td width="25%" align="left" nowrap="nowrap"><input type="image" src="http://admin-apps.webofknowledge.com/JCR/images/markall.gif" name="Mark All on Summary" alt="Mark All on Summary" title="Mark All on Summary" border="0">&nbsp;<input type="image" src="http://admin-apps.webofknowledge.com/JCR/images/update.gif" name="Update Marked List" alt="Update Marked List" title="Update Marked List" border="0">&nbsp;</td>
+                <td width="50%" align="center" nowrap="nowrap"><b><i>Ranking is based on your journal and sort selections.</i></b></td>
+                <td width="25%" align="right" nowrap="nowrap">&nbsp;</td>
+            </tr>
+        </table>
+        <!-- End Summary List Button Bar -->
+
+        <p />
+        <!-- Start Summary List Metrics Header Bar -->
+        <table border="1" width="90%" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+            <tr>
+                <th rowspan="2" class="dataTableHeader">Mark</th>
+                <th rowspan="2" class="dataTableHeader">Rank</th>
+                <th rowspan="2" class=dataTableHeader>Abbreviated Journal Title<br />
+                    <em class="dataTableHeaderNoBold">(linked to journal information)</em></th>
+                <th rowspan="2" class=dataTableHeader>ISSN</th>
+
+                <th colspan="6" class="dataTableHeader" >JCR Data <a href="JCR?RQ=HELP&help_context=2.7" target="_new"><img src="images/info.gif" alt="More Information" width="14" height="14" border="0" align="absmiddle"></a></th>
+                <th colspan="2" class="dataTableHeader" ><nobr><i>Eigenfactor</i><sup>&reg;</sup></nobr> Metrics<a href="JCR?RQ=HELP&help_context=2.18" target="_new"><img src="images/info.gif" alt="More Information" width="14" height="14" border="0" align="absmiddle"></a></th>
+            </tr>
+            <tr>
+                <th class="dataTableHeader" {}>Total Cites</th>
+                <th class="dataTableHeader" {}>Impact<br />Factor</th>
+                <th class="dataTableHeader" {}>5-Year<br />Impact<br />Factor</th>
+                <th class="dataTableHeader" {}>Immediacy<br />Index</th>
+                <th class="dataTableHeader" {}>Articles</th>
+                <th class="dataTableHeader" {}>Cited<br />Half-life</th>
+                <th class="dataTableHeader" {}><nobr><i>Eigenfactor</i><sup>&reg;</sup></nobr><br>Score</th>
+                <th class="dataTableHeader" {}><i>Article</i> <nobr><i>Influence</i><sup>&reg;</sup></nobr><br>
+                    Score</th>
+            </tr>
+
+            <!-- End Summary List Metrics Header Bar -->
+
+            <!-- Start Page Records -->
+
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC CANCER" ></td>
+                <td align="center" valign="middle">1321</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1321&journal=BMC+CANCER">BMC CANCER</a>
+                </td>
+                <td align="left" valign="middle" >1471-2407</td>
+                <td align="right" valign="middle" >12565</td>
+                <td align="right" valign="middle" >3.319</td>
+                <td align="right" valign="middle" >3.640</td>
+                <td align="right" valign="middle" >0.370</td>
+                <td align="right" valign="middle" >616</td>
+                <td align="right" valign="middle" >3.8</td>
+                <td align="right" valign="middle" >0.04760</td>
+                <td align="right" valign="middle" >1.065</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC CARDIOVASC DISOR" ></td>
+                <td align="center" valign="middle">1322</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1322&journal=BMC+CARDIOVASC+DISOR">BMC CARDIOVASC DISOR</a>
+                </td>
+                <td align="left" valign="middle" >1471-2261</td>
+                <td align="right" valign="middle" >1006</td>
+                <td align="right" valign="middle" >1.500</td>
+                <td align="right" valign="middle" >1.922</td>
+                <td align="right" valign="middle" >0.270</td>
+                <td align="right" valign="middle" >122</td>
+                <td align="right" valign="middle" >4.3</td>
+                <td align="right" valign="middle" >0.00338</td>
+                <td align="right" valign="middle" >0.564</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC CELL BIOL" ></td>
+                <td align="center" valign="middle">1323</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1323&journal=BMC+CELL+BIOL">BMC CELL BIOL</a>
+                </td>
+                <td align="left" valign="middle" >1471-2121</td>
+                <td align="right" valign="middle" >1800</td>
+                <td align="right" valign="middle" >2.844</td>
+                <td align="right" valign="middle" >3.196</td>
+                <td align="right" valign="middle" >0.500</td>
+                <td align="right" valign="middle" >56</td>
+                <td align="right" valign="middle" >4.8</td>
+                <td align="right" valign="middle" >0.00649</td>
+                <td align="right" valign="middle" >1.092</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC COMPLEM ALTERN M" ></td>
+                <td align="center" valign="middle">1324</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1324&journal=BMC+COMPLEM+ALTERN+M">BMC COMPLEM ALTERN M</a>
+                </td>
+                <td align="left" valign="middle" >1472-6882</td>
+                <td align="right" valign="middle" >2052</td>
+                <td align="right" valign="middle" >1.877</td>
+                <td align="right" valign="middle" >2.343</td>
+                <td align="right" valign="middle" >0.236</td>
+                <td align="right" valign="middle" >373</td>
+                <td align="right" valign="middle" >3.7</td>
+                <td align="right" valign="middle" >0.00454</td>
+                <td align="right" valign="middle" >0.454</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC DEV BIOL" ></td>
+                <td align="center" valign="middle">1325</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1325&journal=BMC+DEV+BIOL">BMC DEV BIOL</a>
+                </td>
+                <td align="left" valign="middle" >1471-213X</td>
+                <td align="right" valign="middle" >2411</td>
+                <td align="right" valign="middle" >2.752</td>
+                <td align="right" valign="middle" >2.995</td>
+                <td align="right" valign="middle" >0.282</td>
+                <td align="right" valign="middle" >39</td>
+                <td align="right" valign="middle" >5.8</td>
+                <td align="right" valign="middle" >0.00843</td>
+                <td align="right" valign="middle" >1.188</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC ENDOCR DISORD" ></td>
+                <td align="center" valign="middle">1326</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1326&journal=BMC+ENDOCR+DISORD">BMC ENDOCR DISORD</a>
+                </td>
+                <td align="left" valign="middle" >1472-6823</td>
+                <td align="right" valign="middle" >357</td>
+                <td align="right" valign="middle" >1.673</td>
+                <td align="right" valign="middle" >&nbsp;</td>
+                <td align="right" valign="middle" >0.067</td>
+                <td align="right" valign="middle" >60</td>
+                <td align="right" valign="middle" >4.0</td>
+                <td align="right" valign="middle" >0.00156</td>
+                <td align="right" valign="middle" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC EVOL BIOL" ></td>
+                <td align="center" valign="middle">1327</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1327&journal=BMC+EVOL+BIOL">BMC EVOL BIOL</a>
+                </td>
+                <td align="left" valign="middle" >1471-2148</td>
+                <td align="right" valign="middle" >9760</td>
+                <td align="right" valign="middle" >3.407</td>
+                <td align="right" valign="middle" >3.844</td>
+                <td align="right" valign="middle" >0.608</td>
+                <td align="right" valign="middle" >273</td>
+                <td align="right" valign="middle" >4.8</td>
+                <td align="right" valign="middle" >0.03769</td>
+                <td align="right" valign="middle" >1.374</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC FAM PRACT" ></td>
+                <td align="center" valign="middle">1328</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1328&journal=BMC+FAM+PRACT">BMC FAM PRACT</a>
+                </td>
+                <td align="left" valign="middle" >1471-2296</td>
+                <td align="right" valign="middle" >1644</td>
+                <td align="right" valign="middle" >1.735</td>
+                <td align="right" valign="middle" >2.144</td>
+                <td align="right" valign="middle" >0.229</td>
+                <td align="right" valign="middle" >201</td>
+                <td align="right" valign="middle" >4.0</td>
+                <td align="right" valign="middle" >0.00584</td>
+                <td align="right" valign="middle" >0.673</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC GASTROENTEROL" ></td>
+                <td align="center" valign="middle">1329</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1329&journal=BMC+GASTROENTEROL">BMC GASTROENTEROL</a>
+                </td>
+                <td align="left" valign="middle" >1471-230X</td>
+                <td align="right" valign="middle" >2175</td>
+                <td align="right" valign="middle" >2.113</td>
+                <td align="right" valign="middle" >2.644</td>
+                <td align="right" valign="middle" >0.253</td>
+                <td align="right" valign="middle" >174</td>
+                <td align="right" valign="middle" >3.8</td>
+                <td align="right" valign="middle" >0.00812</td>
+                <td align="right" valign="middle" >0.774</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC GENET" ></td>
+                <td align="center" valign="middle">1330</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1330&journal=BMC+GENET">BMC GENET</a>
+                </td>
+                <td align="left" valign="middle" >1471-2156</td>
+                <td align="right" valign="middle" >2249</td>
+                <td align="right" valign="middle" >2.356</td>
+                <td align="right" valign="middle" >2.807</td>
+                <td align="right" valign="middle" >0.234</td>
+                <td align="right" valign="middle" >124</td>
+                <td align="right" valign="middle" >4.9</td>
+                <td align="right" valign="middle" >0.00727</td>
+                <td align="right" valign="middle" >0.876</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC GENOMICS" ></td>
+                <td align="center" valign="middle">1331</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1331&journal=BMC+GENOMICS">BMC GENOMICS</a>
+                </td>
+                <td align="left" valign="middle" >1471-2164</td>
+                <td align="right" valign="middle" >20971</td>
+                <td align="right" valign="middle" >4.041</td>
+                <td align="right" valign="middle" >4.500</td>
+                <td align="right" valign="middle" >0.492</td>
+                <td align="right" valign="middle" >1003</td>
+                <td align="right" valign="middle" >3.9</td>
+                <td align="right" valign="middle" >0.08633</td>
+                <td align="right" valign="middle" >1.414</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC GERIATR" ></td>
+                <td align="center" valign="middle">1332</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1332&journal=BMC+GERIATR">BMC GERIATR</a>
+                </td>
+                <td align="left" valign="middle" >1471-2318</td>
+                <td align="right" valign="middle" >1267</td>
+                <td align="right" valign="middle" >2.000</td>
+                <td align="right" valign="middle" >&nbsp;</td>
+                <td align="right" valign="middle" >0.206</td>
+                <td align="right" valign="middle" >136</td>
+                <td align="right" valign="middle" >4.3</td>
+                <td align="right" valign="middle" >0.00476</td>
+                <td align="right" valign="middle" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC HEALTH SERV RES" ></td>
+                <td align="center" valign="middle">1333</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1333&journal=BMC+HEALTH+SERV+RES">BMC HEALTH SERV RES</a>
+                </td>
+                <td align="left" valign="middle" >1472-6963</td>
+                <td align="right" valign="middle" >5238</td>
+                <td align="right" valign="middle" >1.659</td>
+                <td align="right" valign="middle" >2.188</td>
+                <td align="right" valign="middle" >0.150</td>
+                <td align="right" valign="middle" >547</td>
+                <td align="right" valign="middle" >4.3</td>
+                <td align="right" valign="middle" >0.02045</td>
+                <td align="right" valign="middle" >0.712</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC IMMUNOL" ></td>
+                <td align="center" valign="middle">1334</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1334&journal=BMC+IMMUNOL">BMC IMMUNOL</a>
+                </td>
+                <td align="left" valign="middle" >1471-2172</td>
+                <td align="right" valign="middle" >1297</td>
+                <td align="right" valign="middle" >2.246</td>
+                <td align="right" valign="middle" >2.811</td>
+                <td align="right" valign="middle" >0.277</td>
+                <td align="right" valign="middle" >65</td>
+                <td align="right" valign="middle" >4.4</td>
+                <td align="right" valign="middle" >0.00524</td>
+                <td align="right" valign="middle" >0.914</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC INFECT DIS" ></td>
+                <td align="center" valign="middle">1335</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1335&journal=BMC+INFECT+DIS">BMC INFECT DIS</a>
+                </td>
+                <td align="left" valign="middle" >1471-2334</td>
+                <td align="right" valign="middle" >6263</td>
+                <td align="right" valign="middle" >2.561</td>
+                <td align="right" valign="middle" >3.003</td>
+                <td align="right" valign="middle" >0.371</td>
+                <td align="right" valign="middle" >607</td>
+                <td align="right" valign="middle" >3.7</td>
+                <td align="right" valign="middle" >0.02379</td>
+                <td align="right" valign="middle" >0.954</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC MED" ></td>
+                <td align="center" valign="middle">1336</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1336&journal=BMC+MED">BMC MED</a>
+                </td>
+                <td align="left" valign="middle" >1741-7015</td>
+                <td align="right" valign="middle" >4052</td>
+                <td align="right" valign="middle" >7.276</td>
+                <td align="right" valign="middle" >7.446</td>
+                <td align="right" valign="middle" >1.505</td>
+                <td align="right" valign="middle" >214</td>
+                <td align="right" valign="middle" >2.9</td>
+                <td align="right" valign="middle" >0.01736</td>
+                <td align="right" valign="middle" >2.498</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC MED EDUC" ></td>
+                <td align="center" valign="middle">1337</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1337&journal=BMC+MED+EDUC">BMC MED EDUC</a>
+                </td>
+                <td align="left" valign="middle" >1472-6920</td>
+                <td align="right" valign="middle" >1253</td>
+                <td align="right" valign="middle" >1.409</td>
+                <td align="right" valign="middle" >1.725</td>
+                <td align="right" valign="middle" >0.139</td>
+                <td align="right" valign="middle" >173</td>
+                <td align="right" valign="middle" >4.4</td>
+                <td align="right" valign="middle" >0.00385</td>
+                <td align="right" valign="middle" >0.500</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC MED ETHICS" ></td>
+                <td align="center" valign="middle">1338</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1338&journal=BMC+MED+ETHICS">BMC MED ETHICS</a>
+                </td>
+                <td align="left" valign="middle" >1472-6939</td>
+                <td align="right" valign="middle" >338</td>
+                <td align="right" valign="middle" >1.600</td>
+                <td align="right" valign="middle" >&nbsp;</td>
+                <td align="right" valign="middle" >0.361</td>
+                <td align="right" valign="middle" >61</td>
+                <td align="right" valign="middle" >4.2</td>
+                <td align="right" valign="middle" >0.00113</td>
+                <td align="right" valign="middle" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC MED GENET" ></td>
+                <td align="center" valign="middle">1339</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1339&journal=BMC+MED+GENET">BMC MED GENET</a>
+                </td>
+                <td align="left" valign="middle" >1471-2350</td>
+                <td align="right" valign="middle" >2540</td>
+                <td align="right" valign="middle" >2.450</td>
+                <td align="right" valign="middle" >2.508</td>
+                <td align="right" valign="middle" >0.281</td>
+                <td align="right" valign="middle" >128</td>
+                <td align="right" valign="middle" >4.0</td>
+                <td align="right" valign="middle" >0.00918</td>
+                <td align="right" valign="middle" >0.747</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle"><input type="checkbox" name="mark" value="BMC MED GENOMICS" ></td>
+                <td align="center" valign="middle">1340</td>
+                <td class=sorted nowrap=nowrap>
+                    <a href="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=RECORD&rank=1340&journal=BMC+MED+GENOMICS">BMC MED GENOMICS</a>
+                </td>
+                <td align="left" valign="middle" >1755-8794</td>
+                <td align="right" valign="middle" >1453</td>
+                <td align="right" valign="middle" >3.914</td>
+                <td align="right" valign="middle" >4.023</td>
+                <td align="right" valign="middle" >0.473</td>
+                <td align="right" valign="middle" >93</td>
+                <td align="right" valign="middle" >3.3</td>
+                <td align="right" valign="middle" >0.00796</td>
+                <td align="right" valign="middle" >1.365</td>
+            </tr><input type="hidden" name="page_records" value="BMC CANCER,BMC CARDIOVASC DISOR,BMC CELL BIOL,BMC COMPLEM ALTERN M,BMC DEV BIOL,BMC ENDOCR DISORD,BMC EVOL BIOL,BMC FAM PRACT,BMC GASTROENTEROL,BMC GENET,BMC GENOMICS,BMC GERIATR,BMC HEALTH SERV RES,BMC IMMUNOL,BMC INFECT DIS,BMC MED,BMC MED EDUC,BMC MED ETHICS,BMC MED GENET,BMC MED GENOMICS,">
+            <!-- End Page Records -->
+        </table>
+        <br />
+
+        <!-- Start Summary List Button Bar -->
+        <table width="100%">
+            <tr>
+                <td width="25%" align="left" nowrap="nowrap"><input type="image" src="http://admin-apps.webofknowledge.com/JCR/images/markall.gif" name="Mark All on Summary" alt="Mark All on Summary" title="Mark All on Summary" border="0">&nbsp;<input type="image" src="http://admin-apps.webofknowledge.com/JCR/images/update.gif" name="Update Marked List" alt="Update Marked List" title="Update Marked List" border="0">&nbsp;</td>
+                <td width="50%" align="center" nowrap="nowrap">&nbsp;</td>
+                <td width="25%" align="right" nowrap="nowrap">&nbsp;</td>
+            </tr>
+        </table>
+        <!-- End Summary List Button Bar -->
+
+        <!-- Start VCR Control -->
+        <table width="100%">
+            <tr>
+                <td width="25%" align="left" nowrap="nowrap"><b>Journals 1321 - 1340 (of&nbsp;8539)</b></td>
+                <td width="50%" align="center" nowrap="nowrap"> <table border=0 cellspacing=0 cellpadding=0 class=textbold > <tr align=CENTER valign=MIDDLE> <td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1"> <img src="http://admin-apps.webofknowledge.com/JCR/images/first10a.gif" alt="First Page" title="First Page" name="First Page"  border="0" vspace="1" hspace="1" ></A></td><td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1001"> <img src="http://admin-apps.webofknowledge.com/JCR/images/back10a.gif" alt="Previous 10 Pages" title="Previous 10 Pages" name="Previous 10 Pages"  border="0" vspace="1" hspace="1" ></A></td><td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1301"> <img src="http://admin-apps.webofknowledge.com/JCR/images/prevpga.gif" alt="Previous Page" title="Previous Page" name="Previous Page"  border="0" vspace="1" hspace="1" ></A></td><td NOWRAP>[ <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1201">61</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1221">62</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1241">63</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1261">64</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1281">65</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1301">66</A> | <i>67</i> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1341">68</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1361">69</A> | <A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1381">70</A> ]</td><td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1341"> <img src="http://admin-apps.webofknowledge.com/JCR/images/nextpga.gif" alt="Next Page" title="Next Page" name="Next Page"  border="0" vspace="1" hspace="1" ></A></td><td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=1401"> <img src="http://admin-apps.webofknowledge.com/JCR/images/frwrd10a.gif" alt="Next 10 Pages" title="Next 10 Pages" name="Next 10 Pages"  border="0" vspace="1" hspace="1" ></A></td><td NOWRAP><A HREF="http://admin-apps.webofknowledge.com/JCR/JCR?RQ=SELECT_ALL&cursor=8521"> <img src="http://admin-apps.webofknowledge.com/JCR/images/last10a.gif" alt="Last Page" title="Last Page" name="Last Page"  border="0" vspace="1" hspace="1" ></A></td></tr></table></td>
+                <td width="25%" align="right" nowrap="nowrap"><b>Page 67 of&nbsp;427</b></td>
+            </tr>
+        </table>
+        <!-- End VCR Control -->
+
+    </center>
+    <input type="hidden" name="list_type" value="summary">
+</form>
+<hr>
+
+<!-- Begin JCR Footer -->
+<p>
+<div class="footer" align="center">
+    <a href="http://admin-apps.webofknowledge.com/JCR/help/aupolicy.htm">Acceptable Use Policy</a><br/>
+    Copyright &copy; 2015 <a href="http://www.thomson.com/scientific/scientific.jsp">Thomson Reuters</a>.
+</div>
+<p>
+<table id="footerTable" width="100%" border="0"cellpadding="0" cellspacing="0" align="center">
+    <tr>
+        <td background="http://admin-apps.webofknowledge.com/JCR/images/thomson_bk.gif"><img src="http://admin-apps.webofknowledge.com/JCR/images/thomson.gif" width="306"  border="0" alt="Thomson Reuters Logo" title="Thomson Reuters"></td>
+    </tr>
+</table>
+</body>
+</html>
+
+<!-- End JCR Footer -->
+
