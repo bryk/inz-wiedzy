@@ -21,7 +21,9 @@ public class Analyzer {
 		}
 		Map<String, JCREntry> jcrEntryMap = null;
 		if (args.length > 2) {
+			System.out.println("Fetching JCR Data.");
 			jcrEntryMap = fetchJournalToImpactFactorMap();
+			System.out.println("Done fetching JCR Data.");
 		}
 		Dblp dblp = Parser.getDblpGraphFromFile(new File(args[0]), jcrEntryMap);
 		dblp.printStatisticsAndInitializeDB(args[1]);
@@ -29,7 +31,7 @@ public class Analyzer {
 
 	private static Map<String, JCREntry> fetchJournalToImpactFactorMap() {
 		JcrCrawlerRunner runner = JcrCrawlerRunner.getInstance();
-		List<JCREntry> run = runner.run(10);
+		List<JCREntry> run = runner.run();
 		return run.stream().collect(Collectors.toMap(JCREntry::getTitle, Function.identity()));
 	}
 

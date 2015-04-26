@@ -1,32 +1,26 @@
 package pl.edu.agh.iiet;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
 import pl.edu.agh.iiet.mapper.JcrDblpJorunalTitleMatcher;
 import pl.edu.agh.iiet.model.Author;
 import pl.edu.agh.iiet.model.Dblp;
 import pl.edu.agh.iiet.model.Publication;
 import pl.edu.agh.iiet.model.PublicationType;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import pl.edu.agh.ztis.jcr.model.JCREntry;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Parser {
 	private static final Pattern JOURNAL_KEY_PATTERN = Pattern
@@ -142,10 +136,10 @@ public class Parser {
 		private void addJCRData(Map<String, JCREntry> jcrEntryMap) {
 			if (jcrEntryMap != null) {
 				List<String> jcrTitles = jcrEntryMap.entrySet().stream().map(entry -> entry.getValue().getTitle()).collect(Collectors.toList());
-				JcrDblpJorunalTitleMatcher mapper = new JcrDblpJorunalTitleMatcher();
+				JcrDblpJorunalTitleMatcher mapper = new JcrDblpJorunalTitleMatcher(jcrTitles);
 				publicationBuilders.forEach(builder -> {
-					String dblpTitle = builder.getJournal();
-					String matchedJcrTitle = mapper.findBestMatch(dblpTitle, jcrTitles);
+					String dblpTitle = Optional.ofNullable(builder.getJournal()).orElse("");
+					String matchedJcrTitle = mapper.findBestMatch(dblpTitle);
 					JCREntry jcrEntry = jcrEntryMap.get(matchedJcrTitle);
 					if (jcrEntry != null) {
 						builder.setJournalImpactFactor(jcrEntry.getImpactFactor());
