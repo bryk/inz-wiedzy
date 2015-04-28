@@ -136,15 +136,16 @@ public class Parser {
 		private void addJCRData(Map<String, JCREntry> jcrEntryMap) {
 			if (jcrEntryMap != null) {
 				List<String> jcrTitles = jcrEntryMap.entrySet().stream().map(entry -> entry.getValue().getTitle()).collect(Collectors.toList());
-				JcrDblpJorunalTitleMatcher mapper = new JcrDblpJorunalTitleMatcher(jcrTitles);
+				JcrDblpJorunalTitleMatcher titleMatcher = new JcrDblpJorunalTitleMatcher(jcrTitles);
 				publicationBuilders.forEach(builder -> {
 					String dblpTitle = Optional.ofNullable(builder.getJournal()).orElse("");
-					String matchedJcrTitle = mapper.findBestMatch(dblpTitle);
+					String matchedJcrTitle = titleMatcher.findBestMatch(dblpTitle);
 					JCREntry jcrEntry = jcrEntryMap.get(matchedJcrTitle);
 					if (jcrEntry != null) {
 						builder.setJournalImpactFactor(jcrEntry.getImpactFactor());
 					}
 				});
+				titleMatcher.saveMatchesToCsv();
 			}
 		}
 
