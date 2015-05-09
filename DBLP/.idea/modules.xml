@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/dblpeksploracjadanych.iml" filepath="$PROJECT_DIR$/dblpeksploracjadanych.iml" />
       <module fileurl="file://$PROJECT_DIR$/jcr-crawler/jcr-crawler.iml" filepath="$PROJECT_DIR$/jcr-crawler/jcr-crawler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ministry-list-parser/ministry-list-parser.iml" filepath="$PROJECT_DIR$/ministry-list-parser/ministry-list-parser.iml" />
     </modules>
   </component>
 </project>
