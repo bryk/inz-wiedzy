@@ -18,10 +18,6 @@ public class MinistryListParser {
     public static final String FULL_ENTRY_LINE = "^[0-9].*";
     public static final int TITLE_INDEX = 1;
 
-    public static void main(String[] args) throws IOException {
-        new MinistryListParser().parse("ministry_list.txt");
-    }
-
     public List<MinistryListEntry> parse(String file) throws IOException {
         return Files.readAllLines(Paths.get(file)).stream()
                 .map(new PreviousLineAwareSplittingFunction())
@@ -41,8 +37,9 @@ public class MinistryListParser {
             } else {
                 result = Stream.of(current.split("\\s{2,}")).map(String::trim).collect(toList());
                 modifyTitleIfNeeded(result);
+                previous = Optional.empty();
             }
-            return Optional.ofNullable(result).orElse(Collections.<String>emptyList());
+            return Optional.ofNullable(result).orElse(Collections.emptyList());
         }
 
         private void modifyTitleIfNeeded(List<String> result) {

@@ -1,7 +1,11 @@
 package pl.edu.agh.iiet;
 
+import main.java.pl.edu.agh.iet.MinistryListParser;
+import main.java.pl.edu.agh.iet.model.MinistryListEntry;
 import org.xml.sax.SAXException;
+import pl.edu.agh.iiet.matcher.JcrMinistryListMatcher;
 import pl.edu.agh.iiet.model.Dblp;
+import pl.edu.agh.iiet.model.MinistryListEntryJCREntryPair;
 import pl.edu.agh.ztis.jcr.JcrCrawlerRunner;
 import pl.edu.agh.ztis.jcr.model.JCREntry;
 
@@ -19,20 +23,22 @@ public class Analyzer {
 		if (args.length < 2) {
 			usage();
 		}
-		Map<String, JCREntry> jcrEntryMap = null;
+		List<MinistryListEntryJCREntryPair> jcrAndMinistryData = null;
 		if (args.length > 2) {
-			System.out.println("Fetching JCR Data.");
-			jcrEntryMap = fetchJournalToImpactFactorMap();
-			System.out.println("Done fetching JCR Data.");
+			System.out.println("Fetching JCR and Ministry Data.");
+			jcrAndMinistryData = fetchJcrAndMinistryData();
+			System.out.println("Done fetching JCR and Ministry Data.");
 		}
-		Dblp dblp = Parser.getDblpGraphFromFile(new File(args[0]), jcrEntryMap);
+
+		Dblp dblp = Parser.getDblpGraphFromFile(new File(args[0]), jcrAndMinistryData);
 		dblp.printStatisticsAndInitializeDB(args[1]);
 	}
 
-	private static Map<String, JCREntry> fetchJournalToImpactFactorMap() {
+	private static List<MinistryListEntryJCREntryPair> fetchJcrAndMinistryData() throws IOException {
 		JcrCrawlerRunner runner = JcrCrawlerRunner.getInstance();
 		List<JCREntry> run = runner.run();
-		return run.stream().collect(Collectors.toMap(JCREntry::getTitle, Function.identity()));
+		List<MinistryListEntry> ministryListEntries = new MinistryListParser().parse("ministry_list.txt");
+		return new JcrMinistryListMatcher().match(run, ministryListEntries);
 	}
 
 	private static void usage() {
