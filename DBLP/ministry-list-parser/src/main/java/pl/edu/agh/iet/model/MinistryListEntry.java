@@ -90,4 +90,13 @@ public class MinistryListEntry {
             return new MinistryListEntry(title, ISSN, ministryPoints);
         }
     }
+
+    @Override
+    public String toString() {
+        return "MinistryListEntry{" +
+                "title='" + title + '\'' +
+                ", ISSN='" + ISSN + '\'' +
+                ", ministryPoints=" + ministryPoints +
+                '}';
+    }
 }

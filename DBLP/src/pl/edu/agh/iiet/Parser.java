@@ -5,11 +5,8 @@ import com.google.common.collect.ImmutableMap;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import pl.edu.agh.iiet.mapper.JcrDblpJorunalTitleMatcher;
-import pl.edu.agh.iiet.model.Author;
-import pl.edu.agh.iiet.model.Dblp;
-import pl.edu.agh.iiet.model.Publication;
-import pl.edu.agh.iiet.model.PublicationType;
+import pl.edu.agh.iiet.matcher.JcrDblpJorunalTitleMatcher;
+import pl.edu.agh.iiet.model.*;
 import pl.edu.agh.ztis.jcr.model.JCREntry;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -18,6 +15,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -28,7 +26,7 @@ public class Parser {
 	private static final Pattern PAGES_PATTERN = Pattern
 			.compile("(\\d+)-(\\d+)");
 
-	public static Dblp getDblpGraphFromFile(File input, Map<String, JCREntry> jcrEntryMap)
+	public static Dblp getDblpGraphFromFile(File input, List<MinistryListEntryJCREntryPair> jcrAndMinistryData)
 			throws ParserConfigurationException, SAXException, IOException {
 		SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 		SAXParser saxParser = saxParserFactory.newSAXParser();
@@ -36,7 +34,7 @@ public class Parser {
 
 		saxParser.parse(input, handler);
 		System.out.println("Done parsing");
-		Dblp ret = handler.computeDblpGraph(jcrEntryMap);
+		Dblp ret = handler.computeDblpGraph(jcrAndMinistryData);
 		System.out.println("Done creating graph");
 		return ret;
 	}
@@ -133,24 +131,27 @@ public class Parser {
 			}
 		}
 
-		private void addJCRData(Map<String, JCREntry> jcrEntryMap) {
-			if (jcrEntryMap != null) {
-				List<String> jcrTitles = jcrEntryMap.entrySet().stream().map(entry -> entry.getValue().getTitle()).collect(Collectors.toList());
+		private void addJCRandMinistryData(List<MinistryListEntryJCREntryPair> jcrAndMinistryData) {
+			if (jcrAndMinistryData != null) {
+				Map<String, MinistryListEntryJCREntryPair> jcrEntryMap = jcrAndMinistryData.stream()
+						.collect(Collectors.toMap(pair -> pair.getJcrEntry().getTitle(), Function.identity()));
+				Set<String> jcrTitles = jcrEntryMap.keySet();
 				JcrDblpJorunalTitleMatcher titleMatcher = new JcrDblpJorunalTitleMatcher(jcrTitles);
 				publicationBuilders.forEach(builder -> {
 					String dblpTitle = Optional.ofNullable(builder.getJournal()).orElse("");
 					String matchedJcrTitle = titleMatcher.findBestMatch(dblpTitle);
-					JCREntry jcrEntry = jcrEntryMap.get(matchedJcrTitle);
-					if (jcrEntry != null) {
-						builder.setJournalImpactFactor(jcrEntry.getImpactFactor());
+					MinistryListEntryJCREntryPair pair = jcrEntryMap.get(matchedJcrTitle);
+					if (pair != null) {
+						builder.setJournalImpactFactor(pair.getImpactFactor());
+						builder.setMinistryPoints(pair.getMinistryPoints());
 					}
 				});
 				titleMatcher.saveMatchesToCsv();
 			}
 		}
 
-		public Dblp computeDblpGraph(Map<String, JCREntry> jcrEntryMap) {
-			addJCRData(jcrEntryMap);
+		public Dblp computeDblpGraph(List<MinistryListEntryJCREntryPair> jcrAndMinistryData) {
+			addJCRandMinistryData(jcrAndMinistryData);
 			Map<String, Author> authorsByName = authorBuildersByName
 					.entrySet()
 					.stream()

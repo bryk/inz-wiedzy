@@ -24,12 +24,14 @@ public final class Publication {
     private final String crossref;
     private final Integer numPages;
     private final Double journalImpactFactor;
+    private final Integer ministryPoints;
 
 
     Publication(String title, int year, String publisherName,
                 ImmutableList<Author> authors, PublicationType publicationType,
                 String key, String journalKey, String crossref, String journal,
-                Integer numPages, Double journalImpactFactor) {
+                Integer numPages, Double journalImpactFactor, Integer ministryPoints) {
+        this.ministryPoints = ministryPoints;
         this.id = totalNumberOfAuthors++;
         this.title = title;
         this.year = year;
@@ -51,7 +53,7 @@ public final class Publication {
     public static void printCsvHeader(CSVPrinter csv) throws IOException {
         csv.printRecord("Id", "Name", "publicationYear", "publicationType",
                 "publicationKeyFull", "journalKey", "publicationJournal",
-                "numPages", "journalImpactFactor");
+                "numPages", "journalImpactFactor", "ministryPoints");
     }
 
     public static int getTotalNumberOfAuthors() {
@@ -67,7 +69,7 @@ public final class Publication {
 
     public void toCsvWithoutAuthors(CSVPrinter csv) throws IOException {
         csv.printRecord(id, title, year, type, key, journalKey, journal,
-                numPages, journalImpactFactor);
+                numPages, journalImpactFactor, ministryPoints);
     }
 
     @Override
@@ -75,7 +77,8 @@ public final class Publication {
         return "Publication [number=" + id + ", title=" + title + ", year="
                 + year + ", publisher=" + publisher + ", authors=" + authors
                 + ", type=" + type + ", key=" + key + ", crossref=" + crossref
-                + ", journal=" + journal + ", journalImpactFactor=" + journalImpactFactor + "]";
+                + ", journal=" + journal + ", journalImpactFactor=" + journalImpactFactor
+                + ", ministryPoints=" + ministryPoints + "]";
     }
 
     public final String getName() {
@@ -161,6 +164,7 @@ public final class Publication {
         private String crossref;
         private Integer numPages;
         private Double journalImpactFactor;
+        private Integer ministryPoints;
 
         public String getJournal() {
             return journal;
@@ -225,7 +229,7 @@ public final class Publication {
 
             Publication p = new Publication(title, year, publisher,
                     ImmutableList.copyOf(authors), type, key, journalKey,
-                    crossref, journal, numPages, journalImpactFactor);
+                    crossref, journal, numPages, journalImpactFactor, ministryPoints);
 
             for (Author a : authors)
                 a.addPublication(p);
@@ -238,6 +242,11 @@ public final class Publication {
 
         public void setTitle(String title) {
             this.title = title.replaceAll("\\s+", " ").trim();
+        }
+
+        public Builder setMinistryPoints(Integer ministryPoints) {
+            this.ministryPoints = ministryPoints;
+            return this;
         }
     }
 }
