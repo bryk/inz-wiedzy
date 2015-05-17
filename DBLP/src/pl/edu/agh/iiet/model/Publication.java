@@ -62,7 +62,7 @@ public final class Publication {
      * Returns true when this publication should be added to the output series.
      */
     public boolean shouldBeAddedToSeries() {
-        return year <= 2014;
+        return year == 2010 && year < 2014;
     }
 
     public void toCsvWithoutAuthors(CSVPrinter csv) throws IOException {

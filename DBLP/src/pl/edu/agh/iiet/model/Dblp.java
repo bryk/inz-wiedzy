@@ -6,10 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -41,6 +44,51 @@ public final class Dblp {
 		authors.stream().sorted((a, b) -> a.getName().compareTo(b.getName()))
 				.forEach(e -> System.out.println(e));
 		publications.stream().forEach(e -> System.out.println(e));
+	}
+
+	/**
+	 * Prints author and publication networks to CSV files to be used in GEPHI.
+	 */
+	private void printForCfinder(String file) throws IOException {
+		CSVPrinter authoredgescsv = new CSVPrinter(new FileWriter(new File(file
+				+ "-cfinder.csv")), CSVFormat.TDF);
+
+		Map<String, Map<String, Integer>> data = new HashMap<>();
+		
+		int k = 0 ;
+		for (int i = 0; i < authors.size(); i++) {
+			Author a = authors.get(i);
+			if (!data.containsKey(a.getName())) {
+				data.put(a.getName(), new HashMap<>());
+			}
+			for (Publication pub : a.getPublications()) {
+				if (pub.shouldBeAddedToSeries()) {
+					for (Author other : pub.getAuthors()) {
+						if (!data.containsKey(other.getName())) {
+							if (k % 1000 == 0) {
+								System.out.println("Mapped author number " + i);
+							}
+							k++;
+							Map<String, Integer> otherData = data.get(a
+									.getName());
+							if (!otherData.containsKey(other.getName())) {
+								otherData.put(other.getName(), 0);
+							}
+							otherData.put(other.getName(),
+									otherData.get(other.getName()) + 1);
+						}
+					}
+				}
+			}
+		}
+		for (Entry<String, Map<String, Integer>> entry : data.entrySet()) {
+			for (Entry<String, Integer> child : entry.getValue().entrySet()) {
+				authoredgescsv.printRecord(
+						entry.getKey().replaceAll("\\s+", "_"), child.getKey()
+								.replaceAll("\\s+", "_"), child.getValue());
+			}
+		}
+		authoredgescsv.close();
 	}
 
 	/**
@@ -157,8 +205,9 @@ public final class Dblp {
 
 		System.out.printf("Number of authors of those publications: %d\n",
 				authors.size());
-		
-		//debugPrint();
+
+		// debugPrint();
 		printGraphsToCsvFile(file);
+		//printForCfinder(file);
 	}
 }
