@@ -72,10 +72,5 @@
 			<artifactId>fest-assert-core</artifactId>
 			<version>2.0M10</version>
 		</dependency>
-		<dependency>
-			<groupId>pl.edu.agh.iet</groupId>
-			<artifactId>jcr-crawler</artifactId>
-			<version>1.0</version>
-		</dependency>
 	</dependencies>
 </project>

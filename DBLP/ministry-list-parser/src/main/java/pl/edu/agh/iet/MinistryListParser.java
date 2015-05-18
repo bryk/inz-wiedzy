@@ -1,6 +1,6 @@
-package main.java.pl.edu.agh.iet;
+package pl.edu.agh.iet;
 
-import main.java.pl.edu.agh.iet.model.MinistryListEntry;
+import pl.edu.agh.iet.model.MinistryListEntry;
 
 import java.io.IOException;
 import java.nio.file.Files;

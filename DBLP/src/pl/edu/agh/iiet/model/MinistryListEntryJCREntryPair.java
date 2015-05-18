@@ -1,6 +1,6 @@
 package pl.edu.agh.iiet.model;
 
-import main.java.pl.edu.agh.iet.model.MinistryListEntry;
+import pl.edu.agh.iet.model.MinistryListEntry;
 import pl.edu.agh.ztis.jcr.model.JCREntry;
 
 public class MinistryListEntryJCREntryPair {

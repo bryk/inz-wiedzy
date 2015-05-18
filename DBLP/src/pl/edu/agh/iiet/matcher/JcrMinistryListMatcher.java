@@ -1,7 +1,7 @@
 package pl.edu.agh.iiet.matcher;
 
 import com.google.common.collect.Sets;
-import main.java.pl.edu.agh.iet.model.MinistryListEntry;
+import pl.edu.agh.iet.model.MinistryListEntry;
 import pl.edu.agh.iiet.model.MinistryListEntryJCREntryPair;
 import pl.edu.agh.ztis.jcr.model.JCREntry;
 

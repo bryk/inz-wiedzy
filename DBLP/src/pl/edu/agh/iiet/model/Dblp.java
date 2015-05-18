@@ -1,22 +1,15 @@
 package pl.edu.agh.iiet.model;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
-import org.apache.commons.collections.map.HashedMap;
+import com.google.common.collect.ImmutableList;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
-import com.google.common.collect.ImmutableList;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 /**
  * Main DBLP graph object containing all authors and all publications.

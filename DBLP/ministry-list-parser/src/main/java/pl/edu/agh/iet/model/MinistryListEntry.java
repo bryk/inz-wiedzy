@@ -1,4 +1,4 @@
-package main.java.pl.edu.agh.iet.model;
+package pl.edu.agh.iet.model;
 
 import java.util.List;
 

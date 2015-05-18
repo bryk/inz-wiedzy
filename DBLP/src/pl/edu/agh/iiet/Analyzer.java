@@ -1,8 +1,8 @@
 package pl.edu.agh.iiet;
 
-import main.java.pl.edu.agh.iet.MinistryListParser;
-import main.java.pl.edu.agh.iet.model.MinistryListEntry;
 import org.xml.sax.SAXException;
+import pl.edu.agh.iet.MinistryListParser;
+import pl.edu.agh.iet.model.MinistryListEntry;
 import pl.edu.agh.iiet.matcher.JcrMinistryListMatcher;
 import pl.edu.agh.iiet.model.Dblp;
 import pl.edu.agh.iiet.model.MinistryListEntryJCREntryPair;
@@ -13,9 +13,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class Analyzer {
 	public static void main(String[] args) throws ParserConfigurationException,
